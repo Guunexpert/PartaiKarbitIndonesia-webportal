@@ -11,22 +11,22 @@ const config = {
   links: [
     {
       label: 'Our Teams',
-      href: '/pages/team.astro',
+      href: '/team',
       color: '#6b3fa8',
     },
     {
       label: 'Donation',
-      href: 'https://store.yourserver.com',
+      href: '/donate',
       color: '#2d8c52',
     },
     {
       label: 'FAQ',
-      href: 'https://yourserver.com/rules',
+      href: '/faq',
       color: '#c04444',
     },
     {
       label: 'Leaderboard',
-      href: 'https://discord.gg/yourserver',
+      href: '/leaderboard',
       color: '#2d6fa8',
     },
   ],
