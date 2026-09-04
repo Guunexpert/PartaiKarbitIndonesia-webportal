@@ -30,7 +30,69 @@ const config = {
       color: '#2d6fa8',
     },
   ],
-
+  
+  teamSections: [
+    {
+      category: "Community",
+      description: "Tanpa Kalian Server ini mungkin tidak ada",
+      members: [
+        {
+          name: "All",
+          role: "Community",
+          avatar: "/images/team/placeholder.png",
+          socialUrl: "#"
+        }
+      ]
+    },
+    {
+      category: "Teknisi",
+      description: "Para Teknisi ygy",
+      members: [
+        {
+          name: "Arul",
+          role: "Admin loh ya",
+          avatar: "/images/team/placeholder.png",
+          socialUrl: "#"
+        },
+        {
+          name: "Ryo",
+          role: "Developer nya gais",
+          avatar: "/images/team/placeholder.png",
+          socialUrl: "#"
+        }
+      ]
+    },
+    {
+      category: "Moderator",
+      description: "Mata mata dalam Server",
+      members: [
+        {
+          name: "Rain",
+          role: "Moderator",
+          avatar: "/images/team/placeholder.png",
+          socialUrl: "#"
+        },
+        {
+          name: "Reserved Slot",
+          role: "Open for Application",
+          avatar: "/images/team/placeholder.png",
+          socialUrl: "#"
+        }
+      ]
+    },
+    {
+      category: "Support",
+      description: "Gw sendiri yang ngurus web, domain, bantu-bantu secara sukarela",
+      members: [
+        {
+          name: "GunahD (GuunExpert)",
+          role: "Support?",
+          avatar: "/images/team/placeholder.png",
+          socialUrl: "#"
+        }
+      ]
+    }
+  ]
 };
 
 export default config;
