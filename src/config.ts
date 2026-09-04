@@ -99,7 +99,7 @@ const config = {
     },
     {
       category: "Moderator",
-      description: "Penjaga ketengangan server",
+      description: "Penjaga ketenangan server",
       members: [
         {
           name: "Rain",
