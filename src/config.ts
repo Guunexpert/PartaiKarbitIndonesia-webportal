@@ -15,21 +15,22 @@ const config = {
     version2: 'Bedrock Edition Terbaru',
     rules: [
       'Hormati semua pemain dan staff.',
-      'Dilarang menggunakan cheat, exploit, atau mod yang merugikan pemain lain.',
-      'Jangan melakukan spam, griefing, atau promosi tanpa izin.',
+      'Dilarang menggunakan cheat, exploit, mod, atau area yang merugikan pemain lain.',
+      'Dilarang kill player lain tanpa alasan yang jelas.',
       'Ikuti arahan staff demi kenyamanan bersama.'
     ],
     features: [
-      'Ekonomi server dengan Vault',
+      'Terrain Generation custom dan unik',
       'Komunitas yang aktif dan ramah',
       'Event serta aktivitas server berkala',
-      'Leaderboard kekayaan pemain'
+      'Sistem Ekonomi',
+      'Coming Soon'
     ],
     latestNews: {
       label: 'Event Terkini',
       title: 'Event Spleef',
       date: '04 September 2026 - 20:00 WIB',
-      description: 'Event Spleef akan diadakan pada tanggal 04 September 2026 pukul 20:00 WIB. Siapkan diri kalian'
+      description: 'Event Spleef akan diadakan pada tanggal 04 September 2026 pukul 20:00 WIB. Bersiaplah'
     },
     leaderboardApi: ''
   },
