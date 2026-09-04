@@ -4,9 +4,9 @@ Web portal buat semua kebutuhan untuk server minecraft
 
 Mulai dari
 - Team
-- FAQ
+- FAQ ?
 - Donation
-- Leaderboard ?
+- info server
 
 masih dalam pengembangan so ya kalo pengen ikut kontribusi dipersilahkan
 
@@ -30,6 +30,7 @@ Kustomisasi sesuka mu!
 Drop gambar di folder `/public` dan referensi kan di file `src/config.ts`:
 
 /public/bg.png     →    backgroundImage: '/bg.png'
+
 /public/logo.png   →    logo: '/logo.png'
 
 ## Build for Production

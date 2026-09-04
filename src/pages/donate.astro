@@ -13,7 +13,7 @@ import config from '../config';
 
     <div class="relative z-10 max-w-xl w-full bg-black/40 backdrop-blur-md border border-white/10 rounded-[0.4rem] p-8 text-center space-y-6 shadow-2xl">
       
-      {config.logo && <img src={config.logo} alt={config.serverName} class="h-20 w-auto object-contain mx-auto mb-2" />}
+      {config.logo && <img src={config.logo} alt={config.serverName} class="h-24 w-auto object-contain mx-auto mb-2" />}
 
       <div class="space-y-2">
         <h1 class="text-white font-black text-3xl sm:text-4xl tracking-widest uppercase" style={`color: ${config.hueColor};`}>
@@ -39,7 +39,8 @@ import config from '../config';
       <div class="pt-2">
         <a 
           href="/" 
-          class="text-xs text-white hover:text-white transition-colors tracking-wider uppercase font-bold"
+          class="home-link text-xs text-white transition-colors tracking-wider uppercase font-bold"
+          style={`--hue-color: ${config.hueColor};`}
         >
           &larr; Kembali ke Beranda
         </a>
@@ -52,9 +53,13 @@ import config from '../config';
 
 <style>
   .corner-card {
-    background-color: rgba(255, 255, 255, 0.04);
+    background-color: rgba(115, 115, 115, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
   .corner-card:hover { 
     background-color: var(--card-color); 
+  }
+  .home-link:hover {
+    color: var(--hue-color) !important;
   }
 </style>

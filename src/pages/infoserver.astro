@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import config from '../config';
+---
+
+<Layout title={`Info Server - ${config.serverName}`}>
+  <main class="relative min-h-screen w-full overflow-y-auto px-4 py-6 md:px-12 md:py-10">
+    <div class="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={`background-image: url('${config.backgroundImage}');`}></div>
+    <div class="fixed inset-0 -z-10 bg-black/93"></div>
+    <div class="fixed inset-0 -z-10" style={`background: linear-gradient(to top, ${config.hueColor}40 0%, ${config.hueColor}1a 50%, transparent 100%);`}></div>
+
+    <div class="relative z-10 mx-auto w-full max-w-5xl">
+      <header class="mb-8 flex items-center justify-between gap-4">
+        <a href="/" class="corner-card rounded-[0.4rem] border border-white/10 px-4 py-2 text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:border-white/30 hover:bg-white/10">
+          &larr; Kembali
+        </a>
+        {config.logo && <img src={config.logo} alt={config.serverName} class="h-12 w-auto object-contain" />}
+      </header>
+
+      <section class="mb-10 text-center">
+        <h1 class="mb-3 text-4xl font-black uppercase tracking-widest text-white md:text-5xl" style={`color: ${config.hueColor};`}>Info Server</h1>
+        <p class="text-sm tracking-wide text-white/75 md:text-base">Semua yang perlu kamu tahu sebelum bermain di {config.serverName}.</p>
+      </section>
+
+      <section class="mb-8 grid gap-4 md:grid-cols-2">
+        <div class="corner-card rounded-[0.4rem] border border-white/10 p-6 backdrop-blur-md">
+          <p class="mb-2 text-xs font-bold uppercase tracking-widest text-white/50">Alamat Server</p>
+          <p class="break-all text-2xl font-black tracking-wide text-white">{config.serverInfo.ip}</p>
+          <p class="mt-2 text-sm text-white/60">Versi: {config.serverInfo.version}</p>
+          <p class="break-all text-2xl font-black tracking-wide text-white">{config.serverInfo.ip2}</p>
+          <p class="mt-2 text-sm text-white/60">Versi: {config.serverInfo.version2}</p>
+        </div>
+        <div class="corner-card rounded-[0.4rem] border border-white/10 p-6 backdrop-blur-md">
+          <p class="mb-2 text-xs font-bold uppercase tracking-widest text-white/50">{config.serverInfo.latestNews.label}</p>
+          <p class="text-2xl font-black tracking-wide text-white">{config.serverInfo.latestNews.title}</p>
+          <p class="mt-2 text-sm text-white/60">{config.serverInfo.latestNews.description}</p>
+          <p class="mt-4 text-xs font-bold uppercase tracking-widest" style={`color: ${config.hueColor};`}>{config.serverInfo.latestNews.date}</p>
+        </div>
+      </section>
+
+      <section class="mb-8 grid gap-8 md:grid-cols-2">
+        <div>
+          <h2 class="mb-4 border-b border-white/10 pb-2 text-2xl font-black uppercase tracking-wider" style={`color: ${config.hueColor};`}>Rules</h2>
+          <ul class="space-y-3">
+            {config.serverInfo.rules.map((rule, index) => (
+              <li class="corner-card rounded-[0.4rem] border border-white/10 p-4 text-sm leading-relaxed text-white/80 backdrop-blur-md">
+                <span class="mr-3 font-black" style={`color: ${config.hueColor};`}>{String(index + 1).padStart(2, '0')}</span>{rule}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="mb-4 border-b border-white/10 pb-2 text-2xl font-black uppercase tracking-wider" style={`color: ${config.hueColor};`}>Fitur</h2>
+          <ul class="space-y-3">
+            {config.serverInfo.features.map((feature) => (
+              <li class="corner-card rounded-[0.4rem] border border-white/10 p-4 text-sm leading-relaxed text-white/80 backdrop-blur-md">{feature}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section class="corner-card mb-12 rounded-[0.4rem] border border-white/10 p-6 backdrop-blur-md">
+        <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h2 class="text-2xl font-black uppercase tracking-wider" style={`color: ${config.hueColor};`}>Leaderboard Uang</h2>
+            <p class="mt-1 text-sm text-white/60">Para orang kaya di server.</p>
+          </div>
+          <span id="leaderboard-status" class="text-xs uppercase tracking-widest text-white/40">Mana yah</span>
+        </div>
+        <div id="leaderboard" class="space-y-2" aria-live="polite">
+          <p class="text-sm text-white/60">tampil kalo udah endpoint vault terkoneksi</p>
+        </div>
+      </section>
+
+      <footer class="border-t border-white/5 pb-4 pt-6 text-center text-xs uppercase tracking-widest text-white/30">
+        {config.serverName} &copy; {new Date().getFullYear()}
+      </footer>
+    </div>
+  </main>
+</Layout>
+
+<script define:vars={{ leaderboardApi: config.serverInfo.leaderboardApi }}>
+  const leaderboard = document.querySelector('#leaderboard');
+  const status = document.querySelector('#leaderboard-status');
+
+  if (leaderboardApi) {
+    fetch(leaderboardApi)
+      .then((response) => {
+        if (!response.ok) throw new Error('Leaderboard request failed');
+        return response.json();
+      })
+      .then((players) => {
+        if (!Array.isArray(players) || players.length === 0) throw new Error('No leaderboard data');
+        leaderboard.innerHTML = players.slice(0, 10).map((player, index) => `
+          <div class="flex items-center justify-between gap-4 border-b border-white/10 py-3 text-sm text-white">
+            <span class="font-black text-white/40">${String(index + 1).padStart(2, '0')}</span>
+            <span class="flex-1 font-bold uppercase tracking-wide">${player.name}</span>
+            <span class="font-bold text-emerald-400">$${Number(player.balance).toLocaleString('id-ID')}</span>
+          </div>
+        `).join('');
+        status.textContent = 'Live';
+      })
+      .catch(() => {
+        status.textContent = 'Belum tersedia';
+      });
+  } else {
+    status.textContent = 'Belum terhubung';
+  }
+</script>
+
+<style>
+  .corner-card { background-color: rgba(255, 255, 255, 0.04); }
+  .corner-card:hover { background-color: rgba(255, 255, 255, 0.08); }
+</style>
