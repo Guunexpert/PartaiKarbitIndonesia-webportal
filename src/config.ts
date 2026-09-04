@@ -1,6 +1,6 @@
 const config = {
 
-  serverName: 'YOURSERVER',
+  serverName: 'PKI-SMP',
 
   logo: '/logo.png',
 
@@ -10,22 +10,22 @@ const config = {
 
   links: [
     {
-      label: 'Map',
+      label: 'Our Teams',
       href: 'https://map.yourserver.com',
       color: '#6b3fa8',
     },
     {
-      label: 'Store',
+      label: 'Donation',
       href: 'https://store.yourserver.com',
       color: '#2d8c52',
     },
     {
-      label: 'Rules',
+      label: 'FAQ',
       href: 'https://yourserver.com/rules',
       color: '#c04444',
     },
     {
-      label: 'Discord',
+      label: 'Leaderboard',
       href: 'https://discord.gg/yourserver',
       color: '#2d6fa8',
     },
