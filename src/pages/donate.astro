@@ -6,12 +6,11 @@ import config from '../config';
 <Layout title={`Donation - ${config.serverName}`}>
   <main class="relative min-h-screen w-full flex items-center justify-center p-4">
 
-    <!-- Background -->
+    <!-- bg -->
     <div class="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={`background-image: url('${config.backgroundImage}');`}></div>
     <div class="fixed inset-0 -z-10 bg-black/93"></div>
     <div class="fixed inset-0 -z-10" style={`background: linear-gradient(to top, ${config.hueColor}40 0%, ${config.hueColor}1a 50%, transparent 100%);`}></div>
 
-    <!-- Donation Card Content -->
     <div class="relative z-10 max-w-xl w-full bg-black/40 backdrop-blur-md border border-white/10 rounded-[0.4rem] p-8 text-center space-y-6 shadow-2xl">
       
       {config.logo && <img src={config.logo} alt={config.serverName} class="h-20 w-auto object-contain mx-auto mb-2" />}
@@ -20,8 +19,8 @@ import config from '../config';
         <h1 class="text-white font-black text-3xl sm:text-4xl tracking-widest uppercase">
           Donation
         </h1>
-        <p class="text-slate-300 text-sm sm:text-base font-medium">
-          Dukung kelangsungan dan operasional server <span class="text-white font-bold">{config.serverName}</span> agar tetap aktif dengan berdonasi melalui tautan di bawah ini.
+        <p class="text-white text-sm sm:text-base font-medium">
+          Dukung kelangsungan dan operasional server <span class="text-white font-bold">{config.serverName}</span> agar tetap aktif dengan berdonasi melalui tautan di bawah ini (Sukarela dan tidak ada Paksaan).
         </p>
       </div>
 
@@ -40,7 +39,7 @@ import config from '../config';
       <div class="pt-2">
         <a 
           href="/" 
-          class="text-xs text-slate-400 hover:text-white transition-colors tracking-wider uppercase font-bold"
+          class="text-xs text-white hover:text-white transition-colors tracking-wider uppercase font-bold"
         >
           &larr; Kembali ke Beranda
         </a>
