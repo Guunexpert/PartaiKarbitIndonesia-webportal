@@ -28,9 +28,9 @@ const config = {
     ],
     latestNews: {
       label: 'Event Terkini',
-      title: 'Event Spleef',
-      date: '04 September 2026 - 20:00 WIB',
-      description: 'Event Spleef akan diadakan pada tanggal 04 September 2026 pukul 20:00 WIB. Bersiaplah'
+      title: 'Belum ada Event',
+      date: '-- --',
+      description: '-- --'
     },
     leaderboardApi: ''
   },

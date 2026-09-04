@@ -20,6 +20,12 @@ Node.js 18 or newer - https://nodejs.org
 2. npm run dev
 3. Open http://localhost:4321 di browser.
 
+## Admin Panel
+
+Buka `http://localhost:4321/admin` untuk mengatur event, pengumuman, dan status server tanpa mengubah kode. Data panel disimpan di `localStorage` browser dan langsung dibaca oleh halaman Info Server.
+
+Catatan: mode ini hanya berlaku pada browser/perangkat yang sama. Untuk sinkronisasi realtime antar perangkat atau akses admin yang aman, hubungkan panel ke database/API dan tambahkan autentikasi.
+
 ## Configuration
 
 semua konfigurasi ada di file: `src/config.ts`

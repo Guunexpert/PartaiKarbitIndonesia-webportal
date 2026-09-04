@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import config from '../config';
+---
+
+<Layout title={`Donation - ${config.serverName}`}>
+  <main class="relative min-h-screen w-full flex items-center justify-center p-4">
+
+    <!-- bg -->
+    <div class="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={`background-image: url('${config.backgroundImage}');`}></div>
+    <div class="fixed inset-0 -z-10 bg-black/93"></div>
+    <div class="fixed inset-0 -z-10" style={`background: linear-gradient(to top, ${config.hueColor}40 0%, ${config.hueColor}1a 50%, transparent 100%);`}></div>
+
+    <div class="relative z-10 max-w-xl w-full bg-black/40 backdrop-blur-md border border-white/10 rounded-[0.4rem] p-8 text-center space-y-6 shadow-2xl">
+      
+      {config.logo && <img src={config.logo} alt={config.serverName} class="h-24 w-auto object-contain mx-auto mb-2" />}
+
+      <div class="space-y-2">
+        <h1 class="text-white font-black text-3xl sm:text-4xl tracking-widest uppercase" style={`color: ${config.hueColor};`}>
+          Donation
+        </h1>
+        <p class="text-white text-sm sm:text-base font-medium">
+          Dukung kelangsungan dan operasional server <span class="text-white font-bold">{config.serverName}</span> agar tetap aktif dengan berdonasi melalui tautan di bawah ini (Sukarela dan tidak ada Paksaan).
+        </p>
+      </div>
+
+      <div>
+        <a 
+          href="https://saweria.co/RyoichiNakajima" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="corner-card inline-flex items-center justify-center w-full py-4 px-6 rounded-[0.4rem] backdrop-blur-md transition-all duration-300 text-white font-black text-xl tracking-widest uppercase"
+          style="--card-color: #2d8c52;"
+        >
+          Donasi via Saweria
+        </a>
+      </div>
+
+      <div class="pt-2">
+        <a 
+          href="/" 
+          class="home-link text-xs text-white transition-colors tracking-wider uppercase font-bold"
+          style={`--hue-color: ${config.hueColor};`}
+        >
+          &larr; Kembali ke Beranda
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+</Layout>
+
+<style>
+  .corner-card {
+    background-color: rgba(115, 115, 115, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .corner-card:hover { 
+    background-color: var(--card-color); 
+  }
+  .home-link:hover {
+    color: var(--hue-color) !important;
+  }
+</style>
