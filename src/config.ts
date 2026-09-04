@@ -87,7 +87,7 @@ const config = {
         {
           name: "GunahD (GuunExpert)",
           role: "Support?",
-          avatar: "/public/gunah.jpg",
+          avatar: "/gunah.jpg",
           socialUrl: "#"
         }
       ]
