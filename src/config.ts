@@ -11,7 +11,7 @@ const config = {
   links: [
     {
       label: 'Our Teams',
-      href: 'https://map.yourserver.com',
+      href: '/pages/team.astro',
       color: '#6b3fa8',
     },
     {
