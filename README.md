@@ -1,25 +1,33 @@
-## Thank You
+## Partai Karbit Indonesia SMP
 
-Thank you for downloading this template! If you have any questions or run into issues, feel free to join my discord https://discord.gg/fh9qgtJ7h6.
+Web portal buat semua kebutuhan untuk server minecraft
+
+Mulai dari
+- Team
+- FAQ
+- Donation
+- Leaderboard ?
+
+masih dalam pengembangan so ya kalo pengen ikut kontribusi dipersilahkan
 
 ## Requirements
 
 Node.js 18 or newer - https://nodejs.org
 
-## Getting Started
+## Cara Mulainya
 
 1. npm install
 2. npm run dev
-3. Open http://localhost:4321 in your browser.
+3. Open http://localhost:4321 di browser.
 
 ## Configuration
 
-Everything is in one file: `src/config.ts`
-Configure as you please!
+semua konfigurasi ada di file: `src/config.ts`
+Kustomisasi sesuka mu!
 
 ## Adding Images
 
-Drop your files into the `/public` folder and reference them in `src/config.ts`:
+Drop gambar di folder `/public` dan referensi kan di file `src/config.ts`:
 
 /public/bg.png     →    backgroundImage: '/bg.png'
 /public/logo.png   →    logo: '/logo.png'
@@ -28,4 +36,4 @@ Drop your files into the `/public` folder and reference them in `src/config.ts`:
 
 npm run build
 
-Output will be in the `/dist` folder. Upload that to any static host (Netlify, Vercel, Cloudflare Pages, etc).
+Output nya di folder `/dist` . Nah upload ke manapun penyedia hosting (Netlify, Vercel, Cloudflare Pages, dll)
