@@ -64,6 +64,11 @@ import config from '../config';
         </div>
       </section>
 
+      <section id="changelog-card" class="corner-card mb-12 rounded-[0.4rem] border border-white/10 p-6 backdrop-blur-md">
+        <div class="mb-5 flex items-end justify-between gap-3"><div><p class="mb-2 text-xs font-bold uppercase tracking-widest" style={`color: ${config.hueColor};`}>Server updates</p><h2 class="text-2xl font-black uppercase tracking-wider text-white">Changelog</h2></div><span class="text-xs uppercase tracking-widest text-white/40">Latest</span></div>
+        <div id="changelog-list" class="space-y-4"><p class="text-sm text-white/60">Memuat update...</p></div>
+      </section>
+
       <section class="corner-card mb-12 rounded-[0.4rem] border border-white/10 p-6 backdrop-blur-md">
         <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
           <div>
@@ -84,7 +89,7 @@ import config from '../config';
   </main>
 </Layout>
 
-<script define:vars={{ leaderboardApi: config.serverInfo.leaderboardApi, defaultNews: config.serverInfo.latestNews }}>
+<script define:vars={{ leaderboardApi: config.serverInfo.leaderboardApi, defaultNews: config.serverInfo.latestNews, defaultChangelog: config.serverInfo.changelog }}>
   const newsBlock = document.querySelector('section.grid > div:nth-child(2)');
   const newsTitle = newsBlock?.querySelector('p:nth-child(2)');
   const newsDescription = newsBlock?.querySelector('p:nth-child(3)');
@@ -104,11 +109,16 @@ import config from '../config';
     } else {
       announcement?.setAttribute('hidden', '');
     }
+    const changelog = adminState?.changelog || defaultChangelog;
+    const changelogList = document.querySelector('#changelog-list');
+    if (changelogList) changelogList.innerHTML = changelog.length ? changelog.map((item) => `<article class="changelog-item"><span class="changelog-version">${item.version}</span><div><h3>${item.title}</h3><p>${item.description}</p></div></article>`).join('') : '<p class="text-sm text-white/60">Belum ada update.</p>';
   };
-  updatePortalContent(JSON.parse(localStorage.getItem('pki-admin-state') || 'null'));
-  window.addEventListener('storage', (event) => {
-    if (event.key === 'pki-admin-state') updatePortalContent(event.newValue ? JSON.parse(event.newValue) : null);
-  });
+  const loadPortalContent = () => fetch('/api/portal-state', { cache: 'no-store' }).then((response) => {
+    if (!response.ok) throw new Error('Portal state request failed');
+    return response.json();
+  }).then(updatePortalContent).catch(() => updatePortalContent(null));
+  loadPortalContent();
+  window.setInterval(loadPortalContent, 5000);
   const leaderboard = document.querySelector('#leaderboard');
   const status = document.querySelector('#leaderboard-status');
 
@@ -140,6 +150,10 @@ import config from '../config';
 <style>
   .corner-card { background-color: rgba(255, 255, 255, 0.04); }
   .corner-card:hover { background-color: rgba(255, 255, 255, 0.08); }
+  :global(.changelog-item) { display:flex; gap:1rem; border-left:2px solid var(--accent, #3b82f6); padding-left:1rem; }
+  :global(.changelog-version) { min-width:3.6rem; color:var(--accent, #3b82f6); font-size:.7rem; font-weight:900; letter-spacing:.08em; }
+  :global(.changelog-item h3) { margin:0; color:#fff; font-size:1rem; }
+  :global(.changelog-item p) { margin:.35rem 0 0; color:rgba(255,255,255,.7); font-size:.82rem; line-height:1.5; }
   .live-announcement { position: relative; overflow: hidden; border: 1px solid color-mix(in srgb, var(--accent, #3b82f6) 65%, white 8%); border-left: 5px solid var(--accent, #3b82f6); padding: 1.25rem 1.5rem 1.4rem; background: linear-gradient(110deg, color-mix(in srgb, var(--accent, #3b82f6) 25%, #101214), rgba(255,255,255,.05)); box-shadow: 0 10px 35px rgba(0,0,0,.24); animation: announcement-in .45s ease-out both; }
   .announcement-heading { display: flex; align-items: center; gap: .65rem; margin-bottom: .8rem; }
   .announcement-icon { display: grid; place-items: center; width: 1.7rem; height: 1.7rem; border-radius: 50%; color: #101414; background: var(--accent, #3b82f6); font-weight: 900; }

@@ -32,6 +32,7 @@ const config = {
       date: '-- --',
       description: '-- --'
     },
+    changelog: [{ version: '1.0.0', title: 'Portal launch', description: 'Portal server resmi PKI-SMP telah diluncurkan.' }],
     leaderboardApi: ''
   },
 
