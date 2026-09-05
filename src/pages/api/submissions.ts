@@ -16,6 +16,7 @@ export const GET: APIRoute = async ({ request }) => {
 };
 
 export const POST: APIRoute = async ({ request }) => {
+  if (request.headers.get('origin') && request.headers.get('origin') !== new URL(request.url).origin) return json({ error: 'Bad origin' }, 403);
   const session = await getDiscordSession(request.headers.get('cookie'));
   if (!session) return json({ error: 'Login dengan Discord terlebih dahulu.' }, 401);
   try {

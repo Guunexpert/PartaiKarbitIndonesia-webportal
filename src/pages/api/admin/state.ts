@@ -10,6 +10,7 @@ export const GET: APIRoute = async () => {
 };
 
 export const PUT: APIRoute = async ({ request }) => {
+  if (request.headers.get('origin') && request.headers.get('origin') !== new URL(request.url).origin) return new Response(JSON.stringify({ error: 'Bad origin' }), { status: 403, headers: { 'Content-Type': 'application/json' } });
   try {
     await savePortalState(await request.json());
     return new Response(JSON.stringify(await getPortalState()), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });

@@ -6,6 +6,7 @@ const json = (body: unknown, status = 200) => new Response(JSON.stringify(body),
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 export const POST: APIRoute = async ({ request, params }) => {
+  if (request.headers.get('origin') && request.headers.get('origin') !== new URL(request.url).origin) return json({ error: 'Bad origin' }, 403);
   const session = await getDiscordSession(request.headers.get('cookie'));
   if (!session) return json({ error: 'Login dengan Discord terlebih dahulu.' }, 401);
   if (!params.id || !uuid.test(params.id)) return json({ error: 'Feedback tidak valid.' }, 400);
