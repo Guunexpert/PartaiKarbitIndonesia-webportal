@@ -12,7 +12,7 @@ masih dalam pengembangan so ya kalo pengen ikut kontribusi dipersilahkan
 
 ## Requirements
 
-Node.js 18 or newer - https://nodejs.org
+Node.js 22.12 or newer - https://nodejs.org
 
 ## Cara Mulainya
 
@@ -22,9 +22,24 @@ Node.js 18 or newer - https://nodejs.org
 
 ## Admin Panel
 
-Buka `http://localhost:4321/admin` untuk mengatur event, pengumuman, dan status server tanpa mengubah kode. Data panel disimpan di `localStorage` browser dan langsung dibaca oleh halaman Info Server.
+Buka `http://localhost:4321/admin` untuk mengatur event, pengumuman, status server, changelog, dan memoderasi laporan/saran. Data panel disimpan di Supabase dan akses admin dilindungi session.
 
-Catatan: mode ini hanya berlaku pada browser/perangkat yang sama. Untuk sinkronisasi realtime antar perangkat atau akses admin yang aman, hubungkan panel ke database/API dan tambahkan autentikasi.
+## Feedback Discord
+
+Halaman `/laporsaran` memakai Discord OAuth. Buat aplikasi di Discord Developer Portal, tambahkan redirect URL `http://localhost:4321/api/auth/discord/callback`, lalu isi environment variables berikut:
+
+```env
+SUPABASE_URL=...
+SUPABASE_SERVICE_ROLE_KEY=...
+SESSION_SECRET=...
+ADMIN_USERNAME=...
+ADMIN_PASSWORD_HASH=...
+DISCORD_CLIENT_ID=...
+DISCORD_CLIENT_SECRET=...
+DISCORD_REDIRECT_URI=http://localhost:4321/api/auth/discord/callback
+```
+
+Jalankan isi `supabase/schema.sql` pada project Supabase sebelum memakai feed. Pengguna harus login Discord untuk membuat posting atau memberi reaction. Posting langsung terlihat; admin dapat mengubah status implementasi dan menghapus posting duplikat/spam.
 
 ## Configuration
 

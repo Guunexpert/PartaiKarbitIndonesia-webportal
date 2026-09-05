@@ -48,8 +48,8 @@ const config = {
       color: '#2d8c52',
     },
     {
-      label: 'FAQ',
-      href: '/faq',
+      label: 'Lapor / Saran',
+      href: '/laporsaran',
       color: '#c04444',
     },
     {
