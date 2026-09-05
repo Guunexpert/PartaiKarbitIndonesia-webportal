@@ -55,4 +55,6 @@ values
   ('heart', 'Suka', '❤️', 3),
   ('thinking', 'Menarik', '🤔', 4),
   ('rocket', 'Gas', '🚀', 5)
+  ('sempak', 'Sempak', '🩲', 6)
+  ('basahbang', 'Basah Banget', '💦', 7)
 on conflict (key) do nothing;
