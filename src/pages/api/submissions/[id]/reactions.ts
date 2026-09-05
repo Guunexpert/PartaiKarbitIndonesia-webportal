@@ -14,9 +14,10 @@ export const POST: APIRoute = async ({ request, params }) => {
     const data = await request.json();
     const types = await listReactionTypes();
     if (!types.some((type) => type.key === data.key)) return json({ error: 'Reaction tidak tersedia.' }, 400);
-    await toggleReaction(params.id, data.key, session.id);
-    const [posts, rows] = await Promise.all([listFeedback(), listReactions([params.id])]);
+    const posts = await listFeedback();
     if (!posts.some((post) => post.id === params.id)) return json({ error: 'Feedback tidak ditemukan.' }, 404);
+    await toggleReaction(params.id, data.key, session.id);
+    const rows = await listReactions([params.id]);
     return json({ reactions: types.map((type) => ({ ...type, count: rows.filter((row) => row.reaction_key === type.key).length, selected: rows.some((row) => row.reaction_key === type.key && row.discord_id === session.id) })) });
   } catch (error) { return json({ error: error instanceof Error ? error.message : 'Unable to update reaction' }, 503); }
 };
