@@ -13,7 +13,9 @@ const request = async (path: string, options: RequestInit = {}) => {
   const { url, key } = getConfig();
   const response = await fetch(`${url}/rest/v1/${path}`, { ...options, headers: { apikey: key, Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', ...(options.headers || {}) } });
   if (!response.ok) throw new Error(`Supabase request failed: ${response.status}`);
-  return response.status === 204 ? null : response.json();
+  if (response.status === 204 || response.status === 205) return null;
+  const body = await response.text();
+  return body ? JSON.parse(body) : null;
 };
 
 export const listReactionTypes = async () => request('reaction_types?enabled=eq.true&order=sort_order.asc') as Promise<{ key: string; label: string; emoji: string }[]>;
