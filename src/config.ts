@@ -9,8 +9,8 @@ const config = {
   hueColor: '#3b82f6',
 
   serverInfo: {
-    ip: 'pkii.mooo.com:25577',
-    ip2: 'pkii.mooo.com:25641',
+    ip: 'pkii.mooo.com:25404',
+    ip2: 'pkii.mooo.com:25413',
     version: 'Java Edition 1.21.x - Keatas',
     version2: 'Bedrock Edition Terbaru',
     rules: [
