@@ -4,7 +4,7 @@ Web portal buat semua kebutuhan untuk server minecraft
 
 Mulai dari
 - Team
-- FAQ ?
+- Lapor/Saran
 - Donation
 - info server
 
