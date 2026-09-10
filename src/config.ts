@@ -91,7 +91,7 @@ const config = {
         },
         {
           name: "GunahD",
-          role: "Dev Magang",
+          role: "The GuunExpert",
           avatar: "/gunah.jpg",
           socialUrl: "https://github.com/guunexpert"
         }
